@@ -13,7 +13,7 @@ fetch("Data/stad.json")
 
     let countyName = localStorage.getItem("name") 
     
-    // skaber lande-overskrift
+    // skaber lande-overskrift (Sverige, Norge, el Finland)
     let cityDiv=document.querySelector(".country");
     let h= document.createElement("H1");
     h.innerHTML = countyName;
@@ -24,38 +24,36 @@ fetch("Data/stad.json")
         creatList(J_obj);
     });
     
-    
+      
 });
-
-// ---------------------------------
-// let popu_arr = [];
-
 
 function creatList(obj){
 
-    let myDiv = document.querySelector(".cities"); //ref til div
-    let listitem = document.createElement('Li'); //opret list-pkt
+    let myDiv = document.querySelector(".cities"); //ref to div
+    let listitem = document.createElement('Li'); //list-obj created
 
-    // hvis country ID er lig med localstorage id
+    // if country-id equals cityID
+
     if(obj.countryid==localStorage.getItem("id")){
-        console.log(localStorage.getItem("id"));
-        // opret listitem
+       
+        // create list item
         let listDiv = document.createElement("div");
         listDiv.className = "listDiv";
-        listitem.innerHTML = obj.stadname; //tekst = by-navn fra JSON
-        // knytter id til listitem i dataset
-        listitem.dataset.id = obj.id; //data-indhold = id fra JSON
+        listitem.innerHTML = obj.stadname; //text in list item = city name (fromJSON)
+
+        // creating dataset with id from JSON
+        listitem.dataset.id = obj.id; 
         
-        // skaber knap
-        let button = document. createElement('BUTTON');
+        // creating new button
+        let button = document.createElement('BUTTON');
         button.innerHTML = "Visited";
         listitem.appendChild(button);
         listDiv.appendChild(listitem);
         myDiv.appendChild(listDiv);
 
-        // opretter et klikevent
-        button.addEventListener("click", function(event) { //tilføj besøgte byer til liste
-            // hent popu fra JSON
+        // creating a "click avent"
+        button.addEventListener("click", function(event) { //adding visited cities to list
+            
             let cityArray = [];
 
             if(localStorage.getItem("array")) {
@@ -65,22 +63,17 @@ function creatList(obj){
                 cityArray = [];
             }
 
-            // henter ID fra listitems dataset
+            // getting ID from listitems dataset
             let cityID = listitem.dataset.id;
             
-            // pusher til cityArray
+            // pushing to cityArray
             cityArray.push(cityID);
 
-            // gem array til Localstorage
+            // saving array in Localstorage - stringify need when saving [] in LS
             localStorage.setItem("array", JSON.stringify(cityArray));
         }); 
-    }   
-}  
-function createMyCities(){
-let link= document.querySelector("myPic");  
-link.addEventListener("click", function(event){
-console.log("hej");
-});
+    };
+
 }
 
 

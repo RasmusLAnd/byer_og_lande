@@ -32,26 +32,26 @@ fetch("Data/stad.json")
 // ---------------------------------
 
 function creatBut(obj){
-    let myDiv = document.querySelector(".buttons"); //ref til div
-    let button = document.createElement('BUTTON'); //opret knap
-    button.innerHTML = obj.countryname; //knap-tekst = land fra JSON
-    button.dataset.id = obj.id; //data-indhold = id fra JSON
+    let myDiv = document.querySelector(".buttons"); //ref to div
+    let button = document.createElement('BUTTON'); //creating a button
+    button.innerHTML = obj.countryname; //text = country name from JSON
+    button.dataset.id = obj.id; //dataset with id from JSON
+
     button.addEventListener("click", function(event) {
-        // have fat i buttons id.
+        // id of button
         let countryID = button.dataset.id;
-        // have fat i countryname
+        // country name
         let countryName = button.innerHTML
-        // gemme id + countryname til LS.
+        // id and country name to localstorage
+
         localStorage.setItem("id", countryID);
         localStorage.setItem("name", countryName);
 
-        // sende til en anden side.
+        // link to different page
         location.assign("city.html");
     });
+
     myDiv.appendChild(button);
 }
 
-// function showCountry(id){
-//    console.log(id);
-// }
 
