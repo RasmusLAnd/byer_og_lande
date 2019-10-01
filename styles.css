@@ -7,6 +7,8 @@
 .myPic{
     position: relative;
     text-align: center;
+    width: 100px;
+    height: 100px;
     color: white;
 }
 
@@ -21,9 +23,10 @@
 .city_w_button{
     display: flex;
     justify-content:space-between;
-    width: 25%;
+    width: 40%;
 }
 
 .visitedButton{
     background-color: lightgray;
 }
+
