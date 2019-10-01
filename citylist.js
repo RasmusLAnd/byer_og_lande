@@ -30,26 +30,27 @@ fetch("Data/stad.json")
 function creatList(obj){
 
     let myDiv = document.querySelector(".cities"); //ref to div
+    let text = document.createElement("P");
+    text.className = "city_w_button"
     let listitem = document.createElement('Li'); //list-obj created
-
+    
     // if country-id equals cityID
 
     if(obj.countryid==localStorage.getItem("id")){
        
         // create list item
-        let listDiv = document.createElement("div");
-        listDiv.className = "listDiv";
-        listitem.innerHTML = obj.stadname; //text in list item = city name (fromJSON)
+         listitem.innerHTML = obj.stadname; //text in list item = city name (fromJSON)
 
         // creating dataset with id from JSON
         listitem.dataset.id = obj.id; 
         
         // creating new button
         let button = document.createElement('BUTTON');
+        button.className = "visitedButton"
         button.innerHTML = "Visited";
-        listitem.appendChild(button);
-        listDiv.appendChild(listitem);
-        myDiv.appendChild(listDiv);
+        text.appendChild(listitem)
+        text.appendChild(button);
+        myDiv.appendChild(text);
 
         // creating a "click avent"
         button.addEventListener("click", function(event) { //adding visited cities to list
@@ -71,6 +72,9 @@ function creatList(obj){
 
             // saving array in Localstorage - stringify need when saving [] in LS
             localStorage.setItem("array", JSON.stringify(cityArray));
+
+            //change colour of button
+            this.style.backgroundColor = "pink";
         }); 
     };
 

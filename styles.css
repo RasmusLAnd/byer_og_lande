@@ -17,3 +17,13 @@
 .flag{
     width: 100px;
 }
+
+.city_w_button{
+    display: flex;
+    justify-content:space-between;
+    width: 25%;
+}
+
+.visitedButton{
+    background-color: lightgray;
+}
