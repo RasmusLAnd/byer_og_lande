@@ -23,8 +23,8 @@ fetch("Data/stad.json")
     dataSet1.forEach(J_obj => {
         creatList(J_obj);
     });
-    
-      
+  
+
 });
 
 function creatList(obj){
@@ -39,18 +39,25 @@ function creatList(obj){
     if(obj.countryid==localStorage.getItem("id")){
        
         // create list item
-         listitem.innerHTML = obj.stadname; //text in list item = city name (fromJSON)
+        listitem.innerHTML = obj.stadname; //text in list item = city name (fromJSON)
 
         // creating dataset with id from JSON
         listitem.dataset.id = obj.id; 
         
+        //create popup with info
+        let pop = document.createElement("DIV");
+        pop.className = "popUp";
+        // pop.style="display:none";
+        pop.innerHTML ="info on town: bla, bla, bla";
+
         // creating new button
         let button = document.createElement('BUTTON');
         button.className = "visitedButton"
         button.innerHTML = "Visited";
         text.appendChild(listitem)
         text.appendChild(button);
-        myDiv.appendChild(text);
+        text.appendChild(pop);
+        myDiv.appendChild(text);        
 
         // creating a "click avent"
         button.addEventListener("click", function(event) { //adding visited cities to list
@@ -76,7 +83,10 @@ function creatList(obj){
             //change colour of button
             this.style.backgroundColor = "pink";
         }); 
-    };
+
+        
+
+        };
 
 }
 

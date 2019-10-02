@@ -30,3 +30,11 @@
     background-color: lightgray;
 }
 
+
+.city_w_button .popUp{
+display: none;
+}
+.city_w_button:hover .popUp{
+display: block;
+}
+
