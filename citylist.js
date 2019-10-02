@@ -38,6 +38,9 @@ function creatList(obj){
 
     if(obj.countryid==localStorage.getItem("id")){
        
+        let population = parseInt(obj.population);
+        let cityName = obj.stadname;
+
         // create list item
         listitem.innerHTML = obj.stadname; //text in list item = city name (fromJSON)
 
@@ -48,7 +51,7 @@ function creatList(obj){
         let pop = document.createElement("DIV");
         pop.className = "popUp";
         // pop.style="display:none";
-        pop.innerHTML ="info on town: bla, bla, bla";
+        pop.innerHTML =`The population in ${cityName} is ${population}`;
 
         // creating new button
         let button = document.createElement('BUTTON');
